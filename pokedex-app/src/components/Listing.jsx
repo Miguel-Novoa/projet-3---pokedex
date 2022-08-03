@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 import PokeCard from './PokeCard';
 import axios from 'axios';
 
-import {getPokemons, usePokemonsAllDatas} from '../services/Pokemon.service'
+import { getPokemons } from '../services/Pokemon.service'
 
 function Listing (){
   const [pokemons, setPokemons] = useState([]);
     let url = 'https://pokeapi.co/api/v2/pokemon/';
-    let pokemonsDatas = usePokemonsAllDatas();
     
     const [windowHeight, setWindowHeight] = useState();
     const [scrollPosition, setScrollPosition] = useState();

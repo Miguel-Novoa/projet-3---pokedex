@@ -10,17 +10,3 @@ export function getPokemons(url) {
     })
 }
 
-export function usePokemonsAllDatas() {
-    const [pokemonsDatas, setPokemonsDatas] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon/');
-            setPokemonsDatas(data);
-        }
-        fetchData();
-    }, []); 
-
-    return pokemonsDatas;
-}
-

@@ -38,10 +38,12 @@ function PokeCard (props){
                     <Typography className='pokemonName' gutterBottom variant="h5" component="div">
                         {props.name}
                     </Typography>
-                    <Button className='likeBtn' size="small">
-                        <p>{displayPokemonNumber(props.nb)}</p>
-                        <img width='30' className='ball' src={likedBall} alt="pokeball button" />
-                    </Button>
+                    <div className='cardFooter'>
+                        <p>{displayPokemonNumber(props.nb)}</p> 
+                        <Button className='likeBtn' size="small">
+                            <img width='30' className='ball' src={likedBall} alt="pokeball button" />
+                        </Button>
+                    </div>
                 </CardContent>
             </Card>
 
