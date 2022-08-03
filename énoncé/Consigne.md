@@ -148,7 +148,7 @@ function Home(props) {
 }
 ```
 
----
+
 
 ## Pour commencer …
 

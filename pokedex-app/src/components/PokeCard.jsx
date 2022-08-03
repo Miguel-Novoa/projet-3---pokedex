@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -26,26 +27,28 @@ function PokeCard (props){
 
     }
         return (
-            <Card className='pokeCard' sx={{ width: 240 }}>
-                <CardMedia 
-                    className='pokeImg'
-                    component="img"
-                    height="140"
-                    image={props.image}
-                    alt="pokemon img"
-                />
-                <CardContent className='cardInfos'>
-                    <Typography className='pokemonName' gutterBottom variant="h5" component="div">
-                        {props.name}
-                    </Typography>
-                    <div className='cardFooter'>
-                        <p>{displayPokemonNumber(props.nb)}</p> 
-                        <Button className='likeBtn' size="small">
-                            <img width='30' className='ball' src={likedBall} alt="pokeball button" />
-                        </Button>
-                    </div>
-                </CardContent>
-            </Card>
+            <Link to={`/pages/Sheet/${props.nb}`}>
+                <Card className='pokeCard' sx={{ width: 240 }}>
+                    <CardMedia 
+                        className='pokeImg'
+                        component="img"
+                        height="140"
+                        image={props.image}
+                        alt="pokemon img"
+                    />
+                    <CardContent className='cardInfos'>
+                        <Typography className='pokemonName' gutterBottom variant="h5" component="div">
+                            {props.name}
+                        </Typography>
+                        <div className='cardFooter'>
+                            <p>{displayPokemonNumber(props.nb)}</p> 
+                            <Button className='likeBtn' size="small">
+                                <img width='30' className='ball' src={likedBall} alt="pokeball button" />
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            </Link>
 
         );
 }

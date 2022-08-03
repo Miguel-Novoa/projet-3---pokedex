@@ -1,0 +1,155 @@
+
+.sheetCard{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding-top: 5%;
+}
+
+/* general infos section */
+
+.nameAndGeneralInfos{
+    width: 50%;
+}
+
+.name{
+    width: 100%;
+    height: 50px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.generalInfos{
+    display: flex;
+    flex-flow: column;
+    padding-top: 3%;
+    align-items: center;
+}
+
+.imgAndTypes{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    column-gap: 2rem;
+    justify-content: center;
+    padding-left: 18%;
+}
+
+.img{
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    width: 270px;
+    height: 270px;
+}
+
+.imgAndTypes img{
+    width: 250px;
+    display: flex;
+}
+
+.types{
+    border: 2px solid purple;
+    height: 40px;
+    width: 100px;
+}
+
+.pokemonID{
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+/* profile section */
+
+.profile{
+    display: flex;
+    width: 50%;
+    flex-flow: column;
+}
+
+.profileTitle{
+    width: 100%;
+    height: 50px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats{
+    width: 100%;
+    border: 2px solid var(--primary);
+    height: 300px;
+    color: var(--primary);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.black{
+    color: Black;
+    font-weight: bolder;
+}
+
+/* evolutions section */
+
+.evolutions{
+    display: flex;
+    width: 50%;
+    flex-flow: column;
+}
+
+.evolutionsTitle{
+    width: 100%;
+    height: 50px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.evolutionsInfos{
+    width: 100%;
+    border: 2px solid var(--primary);
+    height: 300px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolutionsImg{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.evolutionsImg > *{
+    width: 20%;
+}
+
+.pokemonImg{
+    width: 80%;
+}
+
+.flecheImg{
+    width: 30%;
+}
