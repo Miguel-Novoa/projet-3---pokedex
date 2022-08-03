@@ -61,15 +61,22 @@ h1{
   display: flex;
   flex-flow: column;
   align-items: center;
+  justify-content: center;
+  align-content: center;
   row-gap: 2rem;
   margin-top: 2%;
+  border: 2px solid greenyellow;
 }
 
 .pokeList{
   display: flex;
-  flex-flow: column;
+  flex-flow: wrap;
   align-items: center;
+  justify-content: center;
   row-gap: 2rem;
+  column-gap: 2rem;
+  width: 90%;
+  border: 2px solid blue;
 }
 
 /*search input*/
@@ -109,12 +116,6 @@ h1{
 
 .wrap{
   width: 30%;
-}
-
-.pokemons{
-  display: flex;
-  flex-flow: row;
-  column-gap: 2rem;
 }
 
 /*cards*/

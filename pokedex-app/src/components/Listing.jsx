@@ -7,7 +7,6 @@ import {getPokemons, usePokemonsAllDatas} from '../services/Pokemon.service'
 
 function Listing (){
   const [pokemons, setPokemons] = useState([]);
-    let pokemonsList = [];
     let url = 'https://pokeapi.co/api/v2/pokemon/';
     let pokemonsDatas = usePokemonsAllDatas();
     
@@ -17,7 +16,7 @@ function Listing (){
 useEffect(()=>{
   getPokemons(url).then(response =>{
     setPokemons(response.results)
-
+    setNextResult(response.next)
   })
 }, [])
     
@@ -32,11 +31,6 @@ useEffect(()=>{
         setScrollPosition(documentHeigth - windowHeight);
     }
 
-
-    useEffect(()=>{
-        setNextResult(pokemonsDatas.next)
-    },[pokemons])
-
     useEffect(() => {
         window.addEventListener("scroll", getScrollPosition);
         if (
@@ -48,15 +42,11 @@ useEffect(()=>{
           axios
             .get(nextResult)
             .then((response) => {
-              console.log('scroll')
               return response;
             })
             .then((res) => {
-              setNextResult(res.data.next);
-
-            
+              setNextResult(res.data.next)
                 setPokemons((prevState)=>[...prevState, ...res.data.results])
-            
             })
             .catch((error) => {
               console.log(error);
@@ -74,7 +64,7 @@ useEffect(()=>{
             {pokemons.map((pokemon, index)=>{
               return(
                 <PokeCard key={index} name={pokemon.name} 
-               nb = {pokemons[index+1]}
+               nb = {[index+1]}
                image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`}/>
               )
             })}
