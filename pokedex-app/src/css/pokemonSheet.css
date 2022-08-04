@@ -56,9 +56,17 @@
 }
 
 .types{
-    border: 2px solid purple;
-    height: 40px;
+    display: flex;
+    flex-flow: column;
+    row-gap: 1rem;
+}
+
+.type{
     width: 100px;
+    height: 40px;
+    color: white;
+    background-color: var(--primary);
+    text-align: center;
 }
 
 .pokemonID{
@@ -88,7 +96,6 @@
 
 .stats{
     width: 100%;
-    border: 2px solid var(--primary);
     height: 300px;
     color: var(--primary);
     display: flex;
@@ -98,6 +105,19 @@
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
+}
+
+.columnOne{
+    display: flex;
+    flex-flow: column;
+   
+}
+
+
+.groups{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
 }
 
 .black{
@@ -127,7 +147,6 @@
 
 .evolutionsInfos{
     width: 100%;
-    border: 2px solid var(--primary);
     height: 300px;
     display: flex;
     flex-flow: column;

@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';;
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import PokemonSheet from './components/PokemonSheet';
+import Sheet from './pages/Sheet';
 import Home from './Home';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='*' element={<Home />} />
-          <Route path='/pages/Sheet/:pokemonId' element={<PokemonSheet />}/>
+          <Route path='/pages/Sheet/:pokemonId' element={<Sheet />}/>
         </Routes>
       </BrowserRouter> 
      

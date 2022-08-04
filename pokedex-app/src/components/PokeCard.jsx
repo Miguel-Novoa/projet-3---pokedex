@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import displayPokemonID from '../js/displayPokemonID';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,20 +13,6 @@ import likedBall from '../images/pokeballColor.png';
 
 function PokeCard (props){
 
-    function displayPokemonNumber (number){
-        let nbArray = String(number).split('').map((number)=>{
-            return Number(number)
-        })
-        
-        if(nbArray.length === 1){
-            return '#00' + number
-        }else if(nbArray.length === 2){
-            return '#0' + number
-        }else if(nbArray.length === 3){
-            return '#'+number
-        }
-
-    }
         return (
             <Link to={`/pages/Sheet/${props.nb}`}>
                 <Card className='pokeCard' sx={{ width: 240 }}>
@@ -41,7 +28,7 @@ function PokeCard (props){
                             {props.name}
                         </Typography>
                         <div className='cardFooter'>
-                            <p>{displayPokemonNumber(props.nb)}</p> 
+                            <p>{displayPokemonID(props.nb)}</p> 
                             <Button className='likeBtn' size="small">
                                 <img width='30' className='ball' src={likedBall} alt="pokeball button" />
                             </Button>
