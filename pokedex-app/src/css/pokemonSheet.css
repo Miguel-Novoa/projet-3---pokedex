@@ -1,16 +1,20 @@
 
+
 .sheetCard{
     width: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 5%;  
+    padding-bottom: 5%;
 }
 
 /* general infos section */
 
 .nameAndGeneralInfos{
     width: 50%;
+    -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
+    box-shadow: 0px 0px 2px 2px var(--primary);  
 }
 
 .name{
@@ -80,6 +84,8 @@
     display: flex;
     width: 50%;
     flex-flow: column;
+    -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
+    box-shadow: 0px 0px 2px 2px var(--primary);  
 }
 
 .profileTitle{
@@ -131,6 +137,8 @@
     display: flex;
     width: 50%;
     flex-flow: column;
+    -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
+    box-shadow: 0px 0px 2px 2px var(--primary);  
 }
 
 .evolutionsTitle{

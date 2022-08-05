@@ -63,7 +63,7 @@ useEffect(()=>{
             {pokemons.map((pokemon, index)=>{
               return(
                 <PokeCard key={index} name={pokemon.name} 
-               nb = {[index+1]}
+               nb = {index+1}
                image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`}/>
               )
             })}

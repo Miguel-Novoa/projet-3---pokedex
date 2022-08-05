@@ -1,6 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import './App.css';
-
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar'
 import Listing from './components/Listing'
@@ -8,7 +8,7 @@ import Listing from './components/Listing'
 function Home() {
 
   return (
-    <div className="App">
+      <div className="App">
         <Navbar/> 
         <div className='list'>
             <div className="wrap">
@@ -23,6 +23,7 @@ function Home() {
           </div>
    
     </div>
+ 
   )
 }
 
