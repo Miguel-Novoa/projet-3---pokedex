@@ -4,20 +4,36 @@ import PokeCard from './PokeCard';
 import axios from 'axios';
 
 import { getPokemons } from '../services/Pokemon.service'
+import likedBall from '../images/pokeballColor.png'
+import dislikedBall from '../images/pokeballB&W.png'
+import { useSelector, useDispatch } from "react-redux";
 
 function Listing (){
   const [pokemons, setPokemons] = useState([]);
   let url = 'https://pokeapi.co/api/v2/pokemon/';
+  let urlBall = dislikedBall;
     
     const [windowHeight, setWindowHeight] = useState();
     const [scrollPosition, setScrollPosition] = useState();
     const [nextResult, setNextResult] = useState();
-useEffect(()=>{
-  getPokemons(url).then(response =>{
-    setPokemons(response.results)
-    setNextResult(response.next)
-  })
-}, [])
+
+    const state = useSelector(state=>state.pokeSlice)
+    
+    const displayBall = (cardId) =>{
+      if(state.find((val)=> val.id === cardId) === undefined){
+          return urlBall = dislikedBall
+      }else{
+          return urlBall = likedBall
+      }
+    }
+    
+
+    useEffect(()=>{
+      getPokemons(url).then(response =>{
+        setPokemons(response.results)
+        setNextResult(response.next)
+      })
+    }, [])
     
 
     function getScrollPosition(e) {
@@ -64,7 +80,8 @@ useEffect(()=>{
               return(
                 <PokeCard key={index} name={pokemon.name} 
                nb = {index+1}
-               image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`}/>
+               image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`}
+               urlBall={displayBall(index+1)}/>
               )
             })}
         </div>

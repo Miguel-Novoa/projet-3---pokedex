@@ -7,14 +7,18 @@ export const slice = createSlice({
     initialState,
     reducers : {
         getLikedPoke : (state, action)=>{
-            console.log('action', action)
-            console.log('before', state)
             state.push(action.payload)
-            console.log('after', state)
         },
+
+        deletePoke : (state, action)=>{
+            return state.filter(({id})=>{
+                console.log(action.payload.id)
+                return id !== action.payload.id;
+            })
+        }
     },
 });
 
-export const { getLikedPoke } = slice.actions;
+export const { getLikedPoke, deletePoke } = slice.actions;
 
 export default slice.reducer;
