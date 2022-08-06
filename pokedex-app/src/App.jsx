@@ -5,6 +5,7 @@ import { store } from './js/store';
 
 import Sheet from './pages/Sheet';
 import Home from './Home';
+import Pokedex from './pages/Pokedex';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='*' element={<Home />} />
             <Route path='/pages/Sheet/:pokemonId' element={<Sheet />}/>
+            <Route path='/pages/MyPokedex/' element={<Pokedex />}/>
           </Routes>
         </BrowserRouter> 
       

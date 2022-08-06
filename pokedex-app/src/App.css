@@ -68,6 +68,7 @@ h1{
 }
 
 .pokeList{
+  padding-top: 5%;
   display: flex;
   flex-flow: wrap;
   align-items: center;

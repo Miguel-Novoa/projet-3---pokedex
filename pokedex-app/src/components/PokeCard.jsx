@@ -29,6 +29,8 @@ function PokeCard (props){
         }
     }
 
+    console.log(state)
+
 
         return (
             //<Link to={`/pages/Sheet/${props.nb}`}>

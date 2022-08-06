@@ -18,9 +18,11 @@ function Navbar () {
                     </Link>
                     <h1>Pokedex</h1>
                 </div>
-                <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={state.length} max={9999}>
-                    <img className='linkIcon' src={ linkIcon } alt="favorites link icon" />
-                </Badge>
+                <Link to={'/pages/MyPokedex/'}>
+                    <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={state.length} max={9999}>
+                        <img className='linkIcon' src={ linkIcon } alt="favorites link icon" />
+                    </Badge>
+                </Link>
             </nav>
         );
 }
