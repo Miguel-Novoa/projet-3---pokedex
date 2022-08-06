@@ -12,7 +12,6 @@ function Sheet() {
     let [pokemonDatas, setPokemonDatas] = useState();
     let [speciesDatas, setSpeciesDatas] = useState();
     let [chainDatas, setChainDatas] = useState();
-    let [idFirstPokemonChain, setIdFirstPokemonChain] = useState();
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
 
     useEffect(()=>{
@@ -26,9 +25,6 @@ function Sheet() {
             setSpeciesDatas(response);
             getPokemons(response.evolution_chain.url).then(res=>{
               setChainDatas(res.chain);
-              getPokemons(res.chain.species.url).then(res=>{
-                  setIdFirstPokemonChain(res.id);
-              })
             })
         })
     }, [pokemonId])
@@ -38,8 +34,7 @@ function Sheet() {
         <Navbar />
         <PokemonSheet pokemonDatas={pokemonDatas} 
           speciesDatas={speciesDatas} 
-          chainDatas={chainDatas}
-          idFirstPokemonChain={idFirstPokemonChain}/>
+          chainDatas={chainDatas}/>
     </div>
   )
 }

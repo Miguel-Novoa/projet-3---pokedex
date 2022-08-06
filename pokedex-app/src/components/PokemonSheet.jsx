@@ -4,14 +4,24 @@ import displayPokemonID from '../js/displayPokemonID';
 
 import fleche from '../images/fleche.png';
 
-function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas, idFirstPokemonChain}) {
+function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas }) {
     let array = [];
-    let str = chainDatas?.species.url.substr(42);
-    console.log(str?.slice(0,-1))
+    let firstEvo = "";
+    let secondEvo = ""
 
     function checkIfUndefined(){
         if(typeof chainDatas?.evolves_to[0] !== 'undefined'){
-            return array = chainDatas?.evolves_to[0].evolves_to
+
+            if(typeof chainDatas?.evolves_to[0].evolves_to[0] !== 'undefined'){
+                return (array = chainDatas?.evolves_to[0].evolves_to,
+                    firstEvo =  chainDatas?.evolves_to[0].species.url.substr(42).slice(0, -1),
+                    secondEvo = chainDatas?.evolves_to[0].evolves_to[0].species.url.substr(42).slice(0, -1)
+                )
+            }else{
+                return (array = chainDatas?.evolves_to[0].evolves_to,
+                    firstEvo =  chainDatas?.evolves_to[0].species.url.substr(42).slice(0, -1)
+                )
+            }
         }else{
             return array
         }
@@ -23,7 +33,6 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas, idFirstPokemonCh
             <div>
                 {pokemonDatas && 
                  speciesDatas &&
-                 idFirstPokemonChain &&
                  chainDatas &&
                     <div className="sheetCard">
                         <section className='nameAndGeneralInfos'>
@@ -51,54 +60,18 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas, idFirstPokemonCh
                                 <h2>Stats</h2>
                             </div>
                             <div className='statsInfos'>
-                                <div className="stat">
-                                    <h5>HP : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[0].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[0].base_stat}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <h5>Attack : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[1].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[1].base_stat}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <h5>Defense : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[2].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[2].base_stat}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <h5>Speed : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[3].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[3].base_stat}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="stat">
-                                    <h5>Sp Atk : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[4].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[4].base_stat}</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                                <div className="stat">
-                                    <h5>Sp Def : </h5>
-                                    <div className="statLevelContainer">
-                                        <div className="statLevel" style={{width : pokemonDatas.stats[5].base_stat + '%'}}>
-                                            <p>{pokemonDatas.stats[5].base_stat}</p>
-                                        </div>
-                                    </div>
-                                </div>  
+                                {
+                                    pokemonDatas.stats.map(stat =>{
+                                        return (<div className="stat">
+                                                    <h5>{stat.stat.name} : </h5>
+                                                    <div className="statLevelContainer">
+                                                        <div className="statLevel" style={{width : ((stat.base_stat/255)*100) + '%'}}>
+                                                            <p>{stat.base_stat}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>)
+                                    })
+                                }
                             </div>
                         </section>
 
@@ -138,19 +111,19 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas, idFirstPokemonCh
 
                                 <div className='evolutionsImg'>
                                     <div>
-                                        <img className='pokemonImg' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idFirstPokemonChain}.png`} alt="pokemon image" />
+                                        <img className='pokemonImg' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${chainDatas.species.url.substr(42).slice(0, -1)}.png`} alt="pokemon image" />
                                     </div>
                                     <div>
                                         <img className='flecheImg firstArrow' src={fleche} style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} alt="arrow image" />
                                     </div>
                                     <div>
-                                        <img className='pokemonImg secondEvo' style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idFirstPokemonChain+1}.png`} alt="pokemon image" />
+                                        <img className='pokemonImg secondEvo' style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${firstEvo}.png`} alt="pokemon image" />
                                     </div>
                                     <div>
                                         <img className='flecheImg secondArrow' style={{display: array.length > 0 ? 'block' : 'none'}} src={fleche} alt="arrow image" />
                                     </div>
                                     <div>
-                                        <img className='pokemonImg thirdEvo' style={{display: array.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idFirstPokemonChain+2}.png`} alt="pokemon image" />
+                                        <img className='pokemonImg thirdEvo' style={{display: array.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${secondEvo}.png`} alt="pokemon image" />
                                     </div>
                                 </div>
                                 <div className='evolutionsText'>
@@ -162,6 +135,8 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas, idFirstPokemonCh
                                         {chainDatas.evolves_to.length && array.length > 0 ? chainDatas.evolves_to[0].species.name : ''} evolve into 
                                         {array.length > 0 ? ' ' + array[0].species.name : ''} 
                                     </p>
+
+                                    <p style={{display: chainDatas.evolves_to.length > 0 ? 'none' : 'block'}}>{chainDatas.species.name + ' '}has no evolution !</p>
                                 </div>
                             </div>
                         </section>

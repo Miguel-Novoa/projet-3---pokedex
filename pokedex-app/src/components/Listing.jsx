@@ -105,7 +105,7 @@ function Listing (){
                   return(
                     <PokeCard key={index} name={pokemon.name} 
                     nb = {index+1}
-                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.substr(34).slice(0, -1)}.png`}
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.substr(34).slice(0, -1)}.png`}
                     urlBall={displayBall(index+1)}/>
                   )
                 })}

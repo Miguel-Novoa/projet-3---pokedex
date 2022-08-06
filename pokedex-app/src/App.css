@@ -119,6 +119,12 @@ h1{
 
 /*cards*/
 
+.pokeCard{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
 .cardInfos{
   display: flex;
   flex-flow: column;
@@ -128,8 +134,9 @@ h1{
 }
 
 .pokeImg{
-  width: 70% !important;
-  padding: 10%;
+  width: 60% !important;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .pokemonName{
