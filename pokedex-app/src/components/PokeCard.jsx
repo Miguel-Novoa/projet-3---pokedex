@@ -33,8 +33,8 @@ function PokeCard (props){
 
 
         return (
-            //<Link to={`/pages/Sheet/${props.nb}`}>
                 <Card className='pokeCard' sx={{ width: 240 }}>
+                    <Link to={`/pages/Sheet/${props.nb}`}>
                     <CardMedia 
                         className='pokeImg'
                         component="img"
@@ -42,6 +42,7 @@ function PokeCard (props){
                         image={props.image}
                         alt="pokemon img"
                     />
+                    </Link>
                     <CardContent className='cardInfos'>
                         <Typography className='pokemonName' gutterBottom variant="h5" component="div">
                             {props.name}
@@ -54,7 +55,6 @@ function PokeCard (props){
                         </div>
                     </CardContent>
                 </Card>
-            //</Link>
 
         );
 }

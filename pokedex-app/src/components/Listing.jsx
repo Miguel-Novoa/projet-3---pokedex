@@ -95,7 +95,7 @@ function Listing (){
            <div className="wrap">
               <div className="search">
                   <input onChange={searchFilter} type="text" className="searchTerm" ref={searchValue} placeholder="Chercher un pokemon"/>
-                  <button type="submit" className="searchButton">
+                  <button className="searchButton">
                       <i className="fa fa-search"></i>
                   </button>
               </div>
