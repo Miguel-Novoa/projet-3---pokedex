@@ -9,8 +9,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import likedBall from '../images/pokeballColor.png';
+import dislikedBall from '../images/pokeballB&W.png'
 import { useSelector, useDispatch } from "react-redux";
-import { getLikedPoke, deletePoke } from "../js/slice.js";
+import { slice, getLikedPoke, deletePoke } from "../js/slice.js";
 
 function PokeCard (props){
     const dispatch = useDispatch();
@@ -19,9 +21,11 @@ function PokeCard (props){
     const sendLikedPoke = (id,name) =>{
        if(state.find((val)=> val.id === id) === undefined){
             dispatch(getLikedPoke({id, name}))
+            console.log(alreadyLiked)
         }else{
             console.log("déjà ajouté")
             dispatch(deletePoke({id, name}))
+            console.log(alreadyLiked)
         }
     }
 

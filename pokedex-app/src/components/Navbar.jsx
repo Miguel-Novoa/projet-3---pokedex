@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom'
 
 import logo from '../images/logo.png';
 import linkIcon from '../images/favListIcon.png';
+import { useSelector } from "react-redux";
 
-class Navbar extends Component {
-    render() {
+
+function Navbar () {
+    const state = useSelector(state=>state.pokeSlice)
+
         return (
             <nav>               
                 <div className='logoAndTitle'>
@@ -15,12 +18,11 @@ class Navbar extends Component {
                     </Link>
                     <h1>Pokedex</h1>
                 </div>
-                <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={120} max={9999}>
+                <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={state.length} max={9999}>
                     <img className='linkIcon' src={ linkIcon } alt="favorites link icon" />
                 </Badge>
             </nav>
         );
-    }
 }
 
 export default Navbar;

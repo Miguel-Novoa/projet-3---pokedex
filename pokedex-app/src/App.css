@@ -57,7 +57,7 @@ h1{
 
 /*pokemon list*/
 
-.list{
+.listAndSearch{
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -1,40 +1,55 @@
 import React, { Component } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import PokeCard from './PokeCard';
 import axios from 'axios';
 
-import { getPokemons } from '../services/Pokemon.service'
+import { getPokemons } from '../services/Pokemon.service';
 import likedBall from '../images/pokeballColor.png'
 import dislikedBall from '../images/pokeballB&W.png'
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Listing (){
   const [pokemons, setPokemons] = useState([]);
-  let url = 'https://pokeapi.co/api/v2/pokemon/';
+  let url = 'https://pokeapi.co/api/v2/pokemon?&limit=30';
   let urlBall = dislikedBall;
+  const searchValue = useRef(null);
     
-    const [windowHeight, setWindowHeight] = useState();
-    const [scrollPosition, setScrollPosition] = useState();
-    const [nextResult, setNextResult] = useState();
+  const [windowHeight, setWindowHeight] = useState();
+  const [scrollPosition, setScrollPosition] = useState();
+  const [nextResult, setNextResult] = useState();
+  const [filtred, setFiltred] = useState([]);
 
-    const state = useSelector(state=>state.pokeSlice)
+  const state = useSelector(state=>state.pokeSlice)
     
-    const displayBall = (cardId) =>{
-      if(state.find((val)=> val.id === cardId) === undefined){
-          return urlBall = dislikedBall
-      }else{
-          return urlBall = likedBall
-      }
+  const displayBall = (cardId) =>{
+    if(state.find((val)=> val.id === cardId) === undefined){
+        return urlBall = dislikedBall
+    }else{
+        return urlBall = likedBall
     }
+  }
+
+  const searchFilter = () => {
+    if (searchValue.current !== null) {
+      let filtredPokemons = filtred.filter((pokemon) => {
+        return pokemon.name.toLowerCase().includes(searchValue.current.value)
+      });
+      setPokemons(filtredPokemons)
+    }
+    if (searchValue.current.value === "") {
+      setPokemons(filtred);
+    }
+  }
     
 
     useEffect(()=>{
       getPokemons(url).then(response =>{
         setPokemons(response.results)
         setNextResult(response.next)
+        setFiltred(response.results)
       })
     }, [])
-    
+
 
     function getScrollPosition(e) {
         e.preventDefault();
@@ -62,6 +77,7 @@ function Listing (){
             .then((res) => {
               setNextResult(res.data.next)
                 setPokemons((prevState)=>[...prevState, ...res.data.results])
+                setFiltred((prevState) => [...prevState,...res.data.results]);
             })
             .catch((error) => {
               console.log(error);
@@ -75,15 +91,25 @@ function Listing (){
 
 
     return (
-        <div className='pokeList'>
-            {pokemons.map((pokemon, index)=>{
-              return(
-                <PokeCard key={index} name={pokemon.name} 
-               nb = {index+1}
-               image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`}
-               urlBall={displayBall(index+1)}/>
-              )
-            })}
+        <div className='listAndSearch'>
+           <div className="wrap">
+              <div className="search">
+                  <input onChange={searchFilter} type="text" className="searchTerm" ref={searchValue} placeholder="Chercher un pokemon"/>
+                  <button type="submit" className="searchButton">
+                      <i className="fa fa-search"></i>
+                  </button>
+              </div>
+            </div>
+            <div className='pokeList'>
+              {pokemons?.map((pokemon, index)=>{
+                  return(
+                    <PokeCard key={index} name={pokemon.name} 
+                    nb = {index+1}
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.substr(34).slice(0, -1)}.png`}
+                    urlBall={displayBall(index+1)}/>
+                  )
+                })}
+            </div>
         </div>
     );
 
