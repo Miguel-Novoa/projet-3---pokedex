@@ -18,11 +18,10 @@ function Listing (){
   const [scrollPosition, setScrollPosition] = useState();
   const [nextResult, setNextResult] = useState();
   const [filtred, setFiltred] = useState([]);
-
-  let liked = JSON.parse(localStorage.getItem('likedPokemons'));
+  const state = useSelector(state=>state.pokeSlice);
     
   const displayBall = (cardId) =>{
-    if(liked.find((val)=> val.id === cardId) === undefined){
+    if(state?.find((val)=> val.id === cardId) === undefined){
         return urlBall = dislikedBall
     }else{
         return urlBall = likedBall

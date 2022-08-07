@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './App.css';
+import '../App.css';
 
-import Navbar from './components/Navbar'
-import Listing from './components/Listing'
+import Navbar from '../components/Navbar'
+import Listing from '../components/Listing'
 
 function Home() {
 

@@ -29,12 +29,15 @@ function Sheet() {
         })
     }, [pokemonId])
 
+    
+
   return (
     <div>
-        <Navbar />
+        <Navbar/>
         <PokemonSheet pokemonDatas={pokemonDatas} 
           speciesDatas={speciesDatas} 
-          chainDatas={chainDatas}/>
+          chainDatas={chainDatas}
+          />
     </div>
   )
 }

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 import logo from '../images/logo.png';
 import linkIcon from '../images/favListIcon.png';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 
 function Navbar () {
-    let liked = JSON.parse(localStorage.getItem('likedPokemons'));
-
+    const state = useSelector(state=>state.pokeSlice);
+    
         return (
             <nav>               
                 <div className='logoAndTitle'>
@@ -19,7 +19,7 @@ function Navbar () {
                     <h1>Pokedex</h1>
                 </div>
                 <Link to={'/pages/MyPokedex/'}>
-                    <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={liked.length} max={9999}>
+                    <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={state?.length} max={9999}>
                         <img className='linkIcon' src={ linkIcon } alt="favorites link icon" />
                     </Badge>
                 </Link>

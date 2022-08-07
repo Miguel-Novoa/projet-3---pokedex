@@ -1,0 +1,58 @@
+/*cards*/
+
+.pokeCard{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+  
+  .cardInfos{
+    display: flex;
+    flex-flow: column;
+    height: 70px;
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+  
+  .pokeImg{
+    width: 60% !important;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  
+  .pokemonName{
+    align-self: center;
+  }
+  
+  .likeBtn{
+    align-self: center;
+  }
+  
+  .cardFooter{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    column-gap: 7rem;
+    align-items: center;
+  }
+
+  .popup{
+    color: var(--primary);
+  }
+
+  .popupBtns{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+
+  .popup button{
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+
+  .popup button:hover{
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }

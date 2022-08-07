@@ -14,7 +14,7 @@ import Popper from '@mui/material/Popper';
 import likedBall from '../images/pokeballColor.png';
 import dislikedBall from '../images/pokeballB&W.png'
 import { useSelector, useDispatch } from "react-redux";
-import { slice, getLikedPoke, deletePoke } from "../js/slice.js";
+import { getLikedPoke, deletePoke } from "../js/slice.js";
 import { addPokedexLocalStorage, deletePokedexLocalStorage } from '../services/LocalStorage.service';
 
 function PokeCard (props){
@@ -61,14 +61,16 @@ function PokeCard (props){
                         </Typography>
                         <div className='cardFooter'>
                             <p>{displayPokemonID(props.nb)}</p> 
-                            <Button aria-describedby={props.nb} className='likeBtn' onClick={(e)=>{sendLikedPoke(props.nb, props.name); state.find((val)=> val.id === props.nb) !== undefined  ? handleClick(e) : ""; console.log(alreadyLiked)}} size="small">
+                            <Button aria-describedby={props.nb} className='likeBtn' onClick={(e)=>{sendLikedPoke(props.nb, props.name); state.find((val)=> val.id === props.nb) !== undefined  ? handleClick(e) : ""}} size="small">
                                 <img  width='30' className='ball' src={props.urlBall} alt="pokeball button" />
                             </Button>
-                            <Popper id={props.nb} open={open} anchorEl={anchorEl}>
-                                <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+                            <Popper className="popup" id={props.nb} open={open} anchorEl={anchorEl}>
+                                <Box className="box" sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
                                     <p>Retirer ce pokemon des favoris ?</p>
-                                    <button onClick={()=>{deleteLikedPoke(props.nb, props.name), setAnchorEl(null)}}>Oui</button>
-                                    <button onClick={()=>{setAnchorEl(null)}}>Non</button>
+                                    <div className='popupBtns'>
+                                        <button onClick={()=>{deleteLikedPoke(props.nb, props.name), setAnchorEl(null)}}>Oui</button>
+                                        <button onClick={()=>{setAnchorEl(null)}}>Non</button>
+                                    </div>
                                 </Box>
                             </Popper>
                         </div>

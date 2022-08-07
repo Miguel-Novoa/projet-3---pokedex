@@ -1,10 +1,13 @@
 import './App.css';
+import './css/card.css'
+import './css/navbar.css'
+import './css/pokemonList.css'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { Provider } from "react-redux";
 import { store } from './js/store';
 
 import Sheet from './pages/Sheet';
-import Home from './Home';
+import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 
 function App() {
