@@ -15,21 +15,23 @@ import likedBall from '../images/pokeballColor.png';
 import dislikedBall from '../images/pokeballB&W.png'
 import { useSelector, useDispatch } from "react-redux";
 import { slice, getLikedPoke, deletePoke } from "../js/slice.js";
+import { addPokedexLocalStorage, deletePokedexLocalStorage } from '../services/LocalStorage.service';
 
 function PokeCard (props){
     const dispatch = useDispatch();
     const state = useSelector(state=>state.pokeSlice);
-    const [alreadyLiked, setAlreadyLiked] = useState(false);
 
     const sendLikedPoke = (id,name) =>{
        if(state.find((val)=> val.id === id) === undefined){
-            dispatch(getLikedPoke({id, name}));           
+            dispatch(getLikedPoke({id, name})); 
+            addPokedexLocalStorage({id, name})          
         }
     }
 
     const deleteLikedPoke = (id, name) =>{
         if(state.find((val)=> val.id === id) !== undefined){
-            dispatch(deletePoke({id, name}));         
+            dispatch(deletePoke({id, name}));     
+            deletePokedexLocalStorage({id, name})    
         }
     }
 

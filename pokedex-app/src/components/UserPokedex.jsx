@@ -5,15 +5,15 @@ import PokeCard from './PokeCard';
 import likedBall from '../images/pokeballColor.png';
 
 function UserPokedex () {
-    const state = useSelector(state=>state.pokeSlice)
+    let liked = JSON.parse(localStorage.getItem('likedPokemons'));
 
         return (
             <div className='pokeList'>
-              {state?.map((pokemon)=>{
+              {liked?.map((pokemon)=>{
                   return(
                     <PokeCard key={pokemon.id} name={pokemon.name} 
                     nb = {pokemon.id}
-                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
                     urlBall={likedBall}/>
                   )
                 })}

@@ -19,10 +19,10 @@ function Listing (){
   const [nextResult, setNextResult] = useState();
   const [filtred, setFiltred] = useState([]);
 
-  const state = useSelector(state=>state.pokeSlice)
+  let liked = JSON.parse(localStorage.getItem('likedPokemons'));
     
   const displayBall = (cardId) =>{
-    if(state.find((val)=> val.id === cardId) === undefined){
+    if(liked.find((val)=> val.id === cardId) === undefined){
         return urlBall = dislikedBall
     }else{
         return urlBall = likedBall
@@ -104,9 +104,9 @@ function Listing (){
               {pokemons?.map((pokemon, index)=>{
                   return(
                     <PokeCard key={index} name={pokemon.name} 
-                    nb = {index+1}
+                    nb = {pokemon.url.substr(34).slice(0, -1)}
                     image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.substr(34).slice(0, -1)}.png`}
-                    urlBall={displayBall(index+1)}/>
+                    urlBall={displayBall(pokemon.url.substr(34).slice(0, -1))}/>
                   )
                 })}
             </div>

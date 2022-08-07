@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 
 function Navbar () {
-    const state = useSelector(state=>state.pokeSlice)
+    let liked = JSON.parse(localStorage.getItem('likedPokemons'));
 
         return (
             <nav>               
@@ -19,7 +19,7 @@ function Navbar () {
                     <h1>Pokedex</h1>
                 </div>
                 <Link to={'/pages/MyPokedex/'}>
-                    <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={state.length} max={9999}>
+                    <Badge anchorOrigin={{vertical: 'bottom',horizontal: 'left',}} className='favLink' color="success" badgeContent={liked.length} max={9999}>
                         <img className='linkIcon' src={ linkIcon } alt="favorites link icon" />
                     </Badge>
                 </Link>

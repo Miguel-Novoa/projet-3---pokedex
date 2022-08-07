@@ -5,11 +5,13 @@ export default function displayPokemonID (number){
     })
     
     if(nbArray.length === 1){
-        return '#00' + number
+        return '#000' + number
     }else if(nbArray.length === 2){
-        return '#0' + number
+        return '#00' + number
     }else if(nbArray.length === 3){
-        return '#'+number
+        return '#0'+ number
+    }else if(nbArray.length === 4){
+        return '#' + number
     }
 
 }
