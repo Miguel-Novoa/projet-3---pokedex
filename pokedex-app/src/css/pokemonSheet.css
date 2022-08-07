@@ -9,10 +9,17 @@
     padding-bottom: 5%;
 }
 
+section{
+    display: flex;
+    width: 50%;
+    flex-flow: column;
+    -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
+    box-shadow: 0px 0px 2px 2px var(--primary); 
+}
+
 /* general infos section */
 
 .nameAndGeneralInfos{
-    width: 50%;
     -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
     box-shadow: 0px 0px 2px 2px var(--primary);  
 }
@@ -91,12 +98,9 @@
     align-items: center;
 }
 
-section{
-    display: flex;
-    width: 50%;
-    flex-flow: column;
-    -webkit-box-shadow: 0px 0px 2px 2px var(--primary); 
-    box-shadow: 0px 0px 2px 2px var(--primary); 
+.pokeText{
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 /* stats section */
@@ -191,16 +195,42 @@ section{
     display: flex;
     flex-flow: row;
     align-items: center;
-}
-
-.evolutionsImg > *{
-    width: 20%;
+    justify-content: center;
 }
 
 .pokemonImg{
-    width: 80%;
+    width: 150px;
 }
 
 .flecheImg{
-    width: 30%;
+    width: 50px;
+}
+
+@media screen and (max-width : 1000px) and (min-width : 800px){
+    section{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width : 800px){
+    section{
+        width: 80%;
+    }
+
+    .imgAndTypes{
+        flex-flow: column;
+        padding-left: 0;
+        row-gap: 0.5rem;
+    }
+
+    .types{
+        flex-flow: row;
+        column-gap: 1rem;
+    }
+
+    .profileInfos{
+        height: 450px;
+        column-gap: 0.5rem;
+        font-size: 1rem;
+    }
 }

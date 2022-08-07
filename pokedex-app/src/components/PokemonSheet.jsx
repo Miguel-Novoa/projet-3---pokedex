@@ -51,7 +51,7 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas }) {
                                     </div> 
                                 </div>
                                 <h5 className='pokemonID'>{displayPokemonID(pokemonDatas.id)}</h5>
-                                <p>{speciesDatas.flavor_text_entries[0].flavor_text}</p>
+                                <p className='pokeText'>{speciesDatas.flavor_text_entries[0].flavor_text}</p>
                             </div>
                         </section>
 
@@ -109,22 +109,12 @@ function PokemonSheet ({pokemonDatas, speciesDatas, chainDatas }) {
                             </div>
                             <div className='evolutionsInfos'>
 
-                                <div className='evolutionsImg'>
-                                    <div>
-                                        <img className='pokemonImg' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${chainDatas.species.url.substr(42).slice(0, -1)}.png`} alt="pokemon image" />
-                                    </div>
-                                    <div>
-                                        <img className='flecheImg firstArrow' src={fleche} style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} alt="arrow image" />
-                                    </div>
-                                    <div>
-                                        <img className='pokemonImg secondEvo' style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${firstEvo}.png`} alt="pokemon image" />
-                                    </div>
-                                    <div>
-                                        <img className='flecheImg secondArrow' style={{display: array.length > 0 ? 'block' : 'none'}} src={fleche} alt="arrow image" />
-                                    </div>
-                                    <div>
-                                        <img className='pokemonImg thirdEvo' style={{display: array.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${secondEvo}.png`} alt="pokemon image" />
-                                    </div>
+                                <div className='evolutionsImg'>   
+                                    <img className='pokemonImg' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${chainDatas.species.url.substr(42).slice(0, -1)}.png`} alt="pokemon image" />
+                                    <img className='flecheImg firstArrow' src={fleche} style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} alt="arrow image" />
+                                    <img className='pokemonImg secondEvo' style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${firstEvo}.png`} alt="pokemon image" />
+                                    <img className='flecheImg secondArrow' style={{display: array.length > 0 ? 'block' : 'none'}} src={fleche} alt="arrow image" />                                  
+                                    <img className='pokemonImg thirdEvo' style={{display: array.length > 0 ? 'block' : 'none'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${secondEvo}.png`} alt="pokemon image" />
                                 </div>
                                 <div className='evolutionsText'>
                                     <p style={{display: chainDatas.evolves_to.length > 0 ? 'block' : 'none'}}>
